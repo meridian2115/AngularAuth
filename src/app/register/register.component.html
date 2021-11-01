@@ -3,32 +3,46 @@
   </div>
   
   <ng-template #signupForm>
-    <div class="row col-sm-6" style="max-width:350px;">
+    <div class="row">
       <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
-            <label for="username">Логин</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
-              required />
-            
-            <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
-            
-            <label for="password">Пароль</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-              required minlength="6" />
-            
-            <label for="lastName">Фамилия</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="form.lastName" #lastName="ngModel" required />
+          <div class="row">
+            <div class="col-7">
+              <div class="row">
+              <div class="col-6">
+                <label for="username">Логин</label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+                  required />
 
-            <label for="firstName">Имя</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="form.firstName" #firstName="ngModel" required />
-            
-            <label for="patronymic">Отчество</label>
-            <input type="text" class="form-control" name="patronymic" [(ngModel)]="form.patronymic" #patronymic="ngModel" required />
-            
-          <button class="btn btn-primary">Register</button>
-          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-            Signup failed!<br/>{{errorMessage}}
+                <label for="password">Пароль</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+                    required minlength="6" />
+
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />                
+                
+              </div>
+              <div class="col-6">
+                <label for="lastName">Фамилия</label>
+                <input type="text" class="form-control" name="lastName" [(ngModel)]="form.lastName" #lastName="ngModel" required />
+    
+                <label for="firstName">Имя</label>
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="form.firstName" #firstName="ngModel" required />
+                
+                <label for="patronymic">Отчество</label>
+                <input type="text" class="form-control" name="patronymic" [(ngModel)]="form.patronymic" #patronymic="ngModel" required />
+              </div>
+              </div>    
+              <div class="row p-2 text-center">
+                <div class="text-center">
+                  <button class="btn btn-primary w-25">Регистрация</button>
+                  <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                    Ошибка регистрации!<br/>{{errorMessage}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">Для регистрации необходимо заполнить все поля</div>
           </div>
         </div>
       </form>

@@ -21,7 +21,11 @@ export class TokenStorageService {
   }
 
   public getToken(): string {
-    return sessionStorage.getItem(TOKEN_KEY)!;
+    if (sessionStorage.getItem(TOKEN_KEY) == null) {
+      return "";
+    } else {
+      return sessionStorage.getItem(TOKEN_KEY)!;
+    }    
   }
   
   public saveUsername(username: string) {
