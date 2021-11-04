@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BACKEND_BASE_DOMAIN } from 'src/env';
-import { JwtResponse } from './jwt-response';
-import { AuthLoginInfo } from './login-info';
-import { SignUpInfo } from './signup-info';
+import { JwtResponse } from '../view/login-block/blocks/login-block/jwt-response';
+import { AuthLoginInfo } from '../view/login-block/blocks/login-block/login-info';
+import { SignUpInfo } from '../auth/signup-info';
 
 const httpOptions = {
   headers: new HttpHeaders ({'Content-type': 'application/json'})

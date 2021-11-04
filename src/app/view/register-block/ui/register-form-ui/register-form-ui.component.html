@@ -1,0 +1,73 @@
+<form>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-3">
+            <div>
+                <mat-form-field>
+                    <mat-label>Имя пользователя</mat-label>
+                    <input matInput>
+                    <mat-error>Введите имя пользователя</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>e-mail</mat-label>
+                    <input matInput type="email">
+                    <mat-error>Введите имя пользователя</mat-error>
+                </mat-form-field>
+            </div>
+          
+            <div>
+                <mat-form-field>
+                <mat-label>Пароль</mat-label>
+                <input matInput type="password">
+                <mat-error>Введите пароль</mat-error>
+                </mat-form-field>
+            </div>
+          
+            <div>
+                <mat-form-field>
+                    <mat-label>Повторите пароль</mat-label>
+                    <input matInput type="password">
+                    <mat-error>Пароли не совпадают</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-3">
+            <div>
+                <mat-form-field>
+                    <mat-label>Фамилия</mat-label>
+                    <input matInput>
+                    <mat-error>Введите имя пользователя</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>Имя</mat-label>
+                    <input matInput>
+                    <mat-error>Введите имя пользователя</mat-error>
+                </mat-form-field>
+            </div>
+          
+            <div>
+                <mat-form-field>
+                <mat-label>Отчество</mat-label>
+                <input matInput>
+                <mat-error>Введите пароль</mat-error>
+                </mat-form-field>
+            </div>          
+            
+            <div class="col-3"></div>
+        </div>
+    </div>
+    
+    <div class="text-center">
+        <button mat-raised-button color="primary" type="submit">Регистрация</button>
+        <a mat-raised-button color="warn" href="/auth/login" >Войти</a>
+    </div>
+</form>
