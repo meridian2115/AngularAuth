@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
-import { httpInterceptorProviders } from './view/login-block/blocks/login-block/auth-interceptor';
 import { WebsiteModule } from './routing/website/website.module';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule} from '@ngrx/router-store';
+import {AuthStoreModule} from "./store/auth-store/auth-store.module";
 
 @NgModule({
   declarations: [
@@ -23,14 +22,14 @@ import { StoreRouterConnectingModule} from '@ngrx/router-store';
     RouterModule.forRoot([]),
     WebsiteModule,
     FormsModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    AuthStoreModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
