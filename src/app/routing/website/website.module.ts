@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AdminGuestGuard } from './guards/admin-guest.guard';
+import {StoreModule} from "@ngrx/store";
+import {DEFAULT_ROUTER_FEATURENAME, routerReducer} from "@ngrx/router-store";
 
 
 
@@ -9,14 +11,15 @@ import { AdminGuestGuard } from './guards/admin-guest.guard';
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forChild([      
+    StoreModule.forFeature(DEFAULT_ROUTER_FEATURENAME, routerReducer),
+    RouterModule.forChild([
       {
-        path: 'auth',        
+        path: 'auth',
         loadChildren: ()=>import('./routing/auth/auth.module')
         .then(module=>module.AuthModule)
       },
       {
-        path: 'admin',        
+        path: 'admin',
         loadChildren: ()=>import('./routing/admin/admin.module')
         .then(module=>module.AdminModule),
         canLoad: [AdminGuestGuard],
@@ -28,7 +31,7 @@ import { AdminGuestGuard } from './guards/admin-guest.guard';
         .then(module=>module.NotFoundModule)
       },
       {
-        path: 'home',        
+        path: 'home',
         loadChildren: ()=>import('./routing/home/home.module')
         .then(module=>module.HomeModule)
       },
@@ -36,10 +39,10 @@ import { AdminGuestGuard } from './guards/admin-guest.guard';
         path: '',
         pathMatch: 'full',
         redirectTo: 'home'
-      },      
-      { 
-        path: '**', 
-        redirectTo: 'not-found' 
+      },
+      {
+        path: '**',
+        redirectTo: 'not-found'
       }
     ])
   ],
