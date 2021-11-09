@@ -1,13 +1,13 @@
-<form [formGroup]="formGroup" 
+<form [formGroup]="formGroup"
     (input)="onFormChange()"
-    (ngSubmit)="onSubmit()">  
+    (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-2"></div>
       <div class="col-7">
       <div>
         <mat-form-field>
           <mat-label>Имя пользователя</mat-label>
-          <input matInput formControlName='login'>
+          <input matInput formControlName='username'>
           <mat-error *ngIf="formGroup.hasError('required', 'login')">Введите имя пользователя</mat-error>
         </mat-form-field>
       </div>
@@ -24,8 +24,10 @@
     </div>
       <mat-error *ngIf="formError">{{formError}}</mat-error>
     <div class="text-center">
-      <button mat-raised-button color="primary" type="submit">Войти</button>
+      <button mat-raised-button color="primary"
+              [disabled]="disabled"
+              type="submit">Войти</button>
       <a mat-raised-button color="warn" href="/auth/register" >Регистрация</a>
     </div>
-    
+
 </form>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { TokenStorageService } from 'src/app/services/token-storage.service';
+import {select, Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import * as auth from "../../../../store/auth-store/store/auth.selectors";
+import {login} from "../../../../store/auth-store/store/auth.actions";
 
 @Component({
   selector: 'app-login-block',
@@ -9,22 +11,18 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class LoginBlockComponent implements OnInit {
 
-  isLoggedIn = false;
-  isLoginFailed = false;
-  roles: string[] = [];
+  loading$: Observable<boolean> = this.store$.pipe(select(auth.getLoading));
+  loaded$: Observable<boolean> = this.store$.pipe(select(auth.getLoaded));
+  serverError$: Observable<string> = this.store$.pipe(select(auth.getServerError));
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  serverError = '';
+
+  constructor(private store$: Store) { }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getAuthorities();
-    }
   }
 
-
-  reloadPage() {
-    window.location.reload();
+  onLogin(loginPayload: {username: string, password: string}) {
+    this.store$.dispatch(login(loginPayload));
   }
-
 }

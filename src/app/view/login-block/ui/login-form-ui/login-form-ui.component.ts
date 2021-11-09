@@ -8,15 +8,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginFormUiComponent implements OnInit {
 
+  formGroup: FormGroup;
+
   @Input() formError = '';
+  @Input() disabled: boolean;
   @Output() login = new EventEmitter();
-  formGroup: FormGroup; 
 
   constructor() { }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup(      {
-      login: new FormControl('',[Validators.required]),
+      username: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required])
       });
   }
@@ -26,11 +28,7 @@ export class LoginFormUiComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.formGroup.get('login')?.value != ''){
-      console.log(this.formGroup.get('login')?.value);    
-      console.log(this.formGroup.value);
-      this.login.emit(this.formGroup.value);
-    }    
+    this.login.emit(this.formGroup.value);
   }
 
 }
