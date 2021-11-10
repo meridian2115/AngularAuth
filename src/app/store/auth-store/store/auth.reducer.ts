@@ -5,6 +5,9 @@ export const AUTH_FEATURE_NAME = 'auth';
 
 export interface AuthData{
   token: string;
+  sub: string;
+  iat: number;
+  exp: number;  //Время до истечения токена
   /*type: string;
   username: string;
   email: string;
@@ -30,7 +33,7 @@ export const authReducer = createReducer(
     ...state,
     loading: true
   })),
-  on(loginSuccess, (state, authData: AuthData) => ({
+  on(loginSuccess, (state, {authData}) => ({
     ...state,
     authData,
     loaded: true,
