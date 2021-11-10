@@ -14,7 +14,7 @@ export class AuthEffects {
       username: action.username,
       password: action.password
     }).pipe(
-      map(loginSuccessData => loginSuccess(loginSuccessData)),
+      map(loginSuccessData => loginSuccess({authData: loginSuccessData})),
       catchError(
         error => of(loginFailed({
           serverError: error.message
