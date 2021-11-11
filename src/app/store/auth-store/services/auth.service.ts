@@ -11,8 +11,9 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-    private jwtHelperService: JwtHelperService
-  ) { }
+    private jwtHelperService: JwtHelperService,
+  ) {
+    }
 
   login(body: {username: string, password: string}) {
     return this.httpClient.post<{token: string}>(
